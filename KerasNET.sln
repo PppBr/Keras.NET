@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KerasNET.UnitTest", "test\KerasNET.UnitTest\KerasNET.UnitTest.csproj", "{330DB19C-4380-486C-90E7-0F556C8A10E3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KerasNET.Core", "src\KerasNET.Core\KerasNET.Core.csproj", "{E1D14286-D18A-44AC-B88D-643016A17C58}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{330DB19C-4380-486C-90E7-0F556C8A10E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{330DB19C-4380-486C-90E7-0F556C8A10E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{330DB19C-4380-486C-90E7-0F556C8A10E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{330DB19C-4380-486C-90E7-0F556C8A10E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D14286-D18A-44AC-B88D-643016A17C58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D14286-D18A-44AC-B88D-643016A17C58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D14286-D18A-44AC-B88D-643016A17C58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D14286-D18A-44AC-B88D-643016A17C58}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {18B1B5F1-AA40-4C12-A804-22F9187343CA}
+	EndGlobalSection
+EndGlobal
