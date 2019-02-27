@@ -27,12 +27,23 @@ namespace Keras
             string dtype = "int32",
             string padding = "pre",
             string truncating = "pre",
-            float value = 0)
+            object value = null)
         {
             int[] length = new int[sequences.size];
             switch (sequences.dtype.Name)
             {
                 case "Object":
+                    for (int i = 0; i < sequences.size; i++)
+                    {
+                        switch (sequences.Data<object>(i))
+                        {
+                            case string data:
+                                length[i] = Regex.Matches(data, ",").Count;
+                                break;
+                        }
+                    }
+                    break;
+                case "Int32":
                     for (int i = 0; i < sequences.size; i++)
                         length[i] = Regex.Matches(sequences.Data<object>(i).ToString(), ",").Count;
                     break;
@@ -43,21 +54,21 @@ namespace Keras
             if (maxlen == null)
                 maxlen = length.Max();
 
-            var nd = new NDArray(typeof(int), new Shape(sequences.size, maxlen.Value));
+            if (value == null)
+                value = 0f;
+
+            var nd = new NDArray(np.int32, new Shape(sequences.size, maxlen.Value));
             for (int i = 0; i < nd.shape[0]; i++)
             {
-                var data = Regex.Matches(sequences.Data<object>(i).ToString(), @"\d")
-                    .Cast<object>()
-                    .Select(x => Convert.ToInt32(x))
-                    .ToArray();
+                var data = new List<int>();
+                foreach (Match match in Regex.Matches(sequences.Data<object>(i).ToString(), @"\d+,*"))
+                    data.Add(Convert.ToInt32(match.Value.Replace(",", "")));
 
                 for (int j = 0; j < nd.shape[1]; j++)
-                {
-                    nd[i, j] = j > data.Count() ? value : data[j];
-                }
+                    nd[i, j] = j >= data.Count() ? Convert.ToInt32(value) : data[j];
             }
 
-            return sequences;
+            return nd;
         }
     }
 }
